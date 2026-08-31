@@ -1,5 +1,30 @@
 import * as THREE from "three";
 
+/**
+ * Resolves a path under public/ against the app's actual base URL, so asset
+ * requests keep working when the site is served from a subpath (e.g. a
+ * GitHub Pages project site at /40-days/) instead of the domain root.
+ */
+export function assetUrl(path: string): string {
+  return import.meta.env.BASE_URL + path.replace(/^\/+/, "");
+}
+
+/** Declares the Vazirmatn @font-face at runtime, base-path safe (see assetUrl). */
+export function injectFontFace() {
+  const url = assetUrl("assets/fonts/Vazirmatn.woff2");
+  const style = document.createElement("style");
+  style.textContent = `
+    @font-face {
+      font-family: "Vazirmatn";
+      src: url("${url}") format("woff2-variations"), url("${url}") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 export function clamp01(x: number): number {
   return Math.min(1, Math.max(0, x));
 }

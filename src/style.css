@@ -1,10 +1,7 @@
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/assets/fonts/Vazirmatn.woff2") format("woff2-variations"), url("/assets/fonts/Vazirmatn.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* @font-face is injected from main.ts (see injectFontFace in utils.ts) so the
+   font URL can be resolved against the app's actual base path — plain CSS
+   can't see Vite's BASE_URL, and a hardcoded root path would 404 once the
+   site is served from a subpath (e.g. GitHub Pages project sites). */
 
 :root {
   color-scheme: dark;

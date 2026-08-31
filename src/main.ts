@@ -5,12 +5,14 @@ import { CarRig } from "./car";
 import { FaceRig } from "./face";
 import { TimelineController } from "./timeline";
 import { createTimelineHandlers, hideLoading, initUi, setLoadingProgress, showLoadingError, wireControls } from "./ui";
+import { assetUrl, injectFontFace } from "./utils";
 
 async function main() {
   // Keep the timeline accurate to wall-clock time even when a frame takes
   // longer than GSAP's default lag-smoothing threshold (e.g. slow/software GPUs).
   gsap.ticker.lagSmoothing(0);
 
+  injectFontFace();
   initUi();
 
   const canvas = document.getElementById("scene-canvas") as HTMLCanvasElement;
@@ -26,15 +28,15 @@ async function main() {
 
   try {
     await Promise.all([
-      engine.loadEnvironment("/assets/hdri/studio.hdr").then(() => {
+      engine.loadEnvironment(assetUrl("assets/hdri/studio.hdr")).then(() => {
         progress.env = 100;
         reportProgress();
       }),
-      car.load("/assets/models/car.glb").then(() => {
+      car.load(assetUrl("assets/models/car.glb")).then(() => {
         progress.car = 100;
         reportProgress();
       }),
-      face.load("/assets/models/face.glb", engine.renderer).then(() => {
+      face.load(assetUrl("assets/models/face.glb"), engine.renderer).then(() => {
         progress.face = 100;
         reportProgress();
       }),
