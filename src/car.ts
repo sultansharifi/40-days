@@ -3,7 +3,7 @@ import * as CANNON from "cannon-es";
 import gsap from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { clamp01, easeOutBack, easeOutCubic, makeLabelSprite, mulberry32, segment, setLabelOpacity, smoothstep } from "./utils";
+import { assetUrl, clamp01, easeOutBack, easeOutCubic, makeLabelSprite, mulberry32, segment, setLabelOpacity, smoothstep } from "./utils";
 
 export type CarPartKey = "chassis" | "body" | "cabin" | "frontWheels" | "rearWheels";
 
@@ -73,7 +73,7 @@ export class CarRig {
 
   async load(url: string) {
     const draco = new DRACOLoader();
-    draco.setDecoderPath("/assets/draco/");
+    draco.setDecoderPath(assetUrl("assets/draco/"));
     const loader = new GLTFLoader();
     loader.setDRACOLoader(draco);
     const gltf = await loader.loadAsync(url);

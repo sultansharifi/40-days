@@ -2,7 +2,7 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader.js";
-import { clamp01, easeOutCubic, makeLabelSprite, segment, setLabelOpacity, smoothstep } from "./utils";
+import { assetUrl, clamp01, easeOutCubic, makeLabelSprite, segment, setLabelOpacity, smoothstep } from "./utils";
 
 // A symbolic side-by-side display scale (not anatomical): sized to read clearly
 // next to the car, roughly matching its visual presence rather than real head size.
@@ -46,7 +46,7 @@ export class FaceRig {
   }
 
   async load(url: string, renderer: THREE.WebGLRenderer) {
-    const ktx2 = new KTX2Loader().setTranscoderPath("/assets/basis/").detectSupport(renderer);
+    const ktx2 = new KTX2Loader().setTranscoderPath(assetUrl("assets/basis/")).detectSupport(renderer);
     const loader = new GLTFLoader();
     loader.setKTX2Loader(ktx2);
 
