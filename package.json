@@ -1,0 +1,24 @@
+{
+  "name": "order-needs-an-orderer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "مقایسه‌ی سه‌بعدی مونتاژ موتر با شکل‌گیری سوراخ بینی جنین — نظم، ناظم می‌خواهد.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "postinstall": "node scripts/copy-vendor-assets.mjs"
+  },
+  "dependencies": {
+    "cannon-es": "^0.20.0",
+    "gsap": "^3.12.5",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.1",
+    "typescript": "^5.6.3",
+    "vazirmatn": "^33.0.3",
+    "vite": "^5.4.21"
+  }
+}

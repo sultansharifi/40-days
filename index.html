@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>نظم، ناظم می‌خواهد</title>
+    <meta
+      name="description"
+      content="مقایسه‌ی سه‌بعدی مونتاژ یک موتر با شکل‌گیری سوراخ بینی جنین — نظم، ناظم می‌خواهد."
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene-canvas" aria-hidden="true"></canvas>
+
+      <header id="hud-top">
+        <div id="brand">نظم، ناظم می‌خواهد</div>
+        <div id="progress-track" role="progressbar" aria-label="پیشرفت انیمیشن" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-fill"></div>
+          <div id="progress-stages">
+            <span class="stage-dot" data-stage="1"></span>
+            <span class="stage-dot" data-stage="2"></span>
+            <span class="stage-dot" data-stage="3"></span>
+          </div>
+        </div>
+      </header>
+
+      <section id="caption-panel" aria-live="polite">
+        <div class="caption-labels">
+          <span class="caption-label caption-label--car">موتر <span class="en">(car)</span></span>
+          <span class="caption-label caption-label--face">جنین <span class="en">(embryo)</span></span>
+        </div>
+        <p id="caption-text"></p>
+      </section>
+
+      <div id="key-row-car" class="key-row key-row--car" aria-hidden="true"></div>
+      <div id="key-row-face" class="key-row key-row--face" aria-hidden="true"></div>
+
+      <div id="finale-overlay" aria-hidden="true">
+        <p id="finale-text">
+          نقشه، نقشه‌کش می‌خواهد.<br />
+          نظم، ناظم می‌خواهد.
+        </p>
+      </div>
+
+      <div id="loading-overlay">
+        <div id="loading-box">
+          <div class="spinner" aria-hidden="true"></div>
+          <p id="loading-text">در حال بارگذاری دارایی‌های سه‌بعدی…</p>
+          <div id="loading-bar-track"><div id="loading-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <footer id="control-bar">
+        <div class="control-group control-group--stages">
+          <button type="button" class="stage-btn" data-stage="1" aria-pressed="false">
+            مرحله (۱)<span class="btn-sub">نقشه</span>
+          </button>
+          <button type="button" class="stage-btn" data-stage="2" aria-pressed="false">
+            مرحله (۲)<span class="btn-sub">ساخت به‌ترتیب</span>
+          </button>
+          <button type="button" class="stage-btn" data-stage="3" aria-pressed="false">
+            مرحله (۳)<span class="btn-sub">حذف یک قطعه</span>
+          </button>
+        </div>
+        <div class="control-group control-group--transport">
+          <button type="button" id="btn-restart" title="از اول">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+            <span>از اول</span>
+          </button>
+          <button type="button" id="btn-play" aria-pressed="true">
+            <svg class="icon-pause" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" hidden><path fill="currentColor" d="M7 5l12 7-12 7z"/></svg>
+            <span class="play-label">توقف</span>
+          </button>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
